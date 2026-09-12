@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box; /* Ensures borders don't alter sizes */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f6;
+    font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+}
+
+/* Main structural framework of the calculator */
+.calculator-container {
+    width: 360px;
+    background-color: #1c1c1e;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* The Calculator Display Panel Viewport */
+#display {
+    width: 100%;
+    height: 90px;
+    background-color: #1c1c1e;
+    color: #ffffff;
+    font-size: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-bottom: 15px;
+}
+
+/* Flexbox Button Row Configuration */
+.buttons-grid {
+    display: flex;
+    flex-wrap: wrap; /* Wraps buttons down into rows */
+    gap: 12px; /* Uniform spacing between all buttons */
+}
+
+/* Core Button Base Profiles */
+.btn {
+    flex: 1 1 calc(25% - 9px); /* Base width calculation for a 4-column layout */
+    height: 70px;
+    border: none;
+    border-radius: 50%; /* Gives the circular key aesthetic */
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.15s ease;
+}
+
+/* Special Structural Exceptions (Flex overrides) */
+.clear-btn {
+    flex: 1 1 calc(50% - 6px); /* Takes up two column spaces */
+    border-radius: 35px; /* Adjusts shape for double-width key */
+    background-color: #a5a5a5;
+    color: #000000;
+}
+
+.clear-btn:hover {
+    background-color: #d8d8d8;
+}
+
+.zero-btn {
+    flex: 1 1 calc(50% - 6px); /* Takes up two column spaces */
+    border-radius: 35px;
+    justify-content: flex-start;
+    padding-left: 28px;
+}
+
+/* 7. Key Colour Identities */
+.digit-btn,
+.decimal-btn {
+    background-color: #333333;
+    color: #ffffff;
+}
+.digit-btn:hover,
+.decimal-btn:hover {
+    background-color: #555555;
+}
+
+.operator-btn,
+.equals-btn {
+    background-color: #ff9f0a;
+    color: #ffffff;
+}
+.operator-btn:hover,
+.equals-btn:hover {
+    background-color: #fcae3b;
+}
+
+.backspace-btn {
+    background-color: #333333;
+    color: #ff9f0a;
+}
+.backspace-btn:hover {
+    background-color: #555555;
+}
