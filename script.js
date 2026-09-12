@@ -149,3 +149,57 @@ clearButton.addEventListener("click", () => {
     shouldResetDisplay = false;
     updateDisplay("0");
 });
+
+// DECIMAL BUTTON EVENT LISTENER
+const decimalButton = document.querySelector(".decimal-btn");
+
+decimalButton.addEventListener("click", () => {
+    // If a calculation just finished, clear the screen for a new decimal entry
+    if (shouldResetDisplay) {
+        display.textContent = "0";
+        shouldResetDisplay = false;
+    }
+
+    // If the display already contains a decimal dot, block it!
+    if (display.textContent.includes(".")) {
+        return;
+    }
+
+    // Append the decimal point to the current screen text
+    display.textContent += ".";
+
+    // Keep our state tracking variables completely synced
+    if (currentOperator === "") {
+        firstNumber = display.textContent;
+    } else {
+        secondNumber = display.textContent;
+    }
+});
+
+// BACKSPACE BUTTON EVENT LISTENER
+const backspaceButton = document.querySelector(".backspace-btn");
+
+backspaceButton.addEventListener("click", () => {
+    // Ignore backspace if an error message is showing or if it's already at "0"
+    if (
+        display.textContent === "0" ||
+        display.textContent === "Cannot divide by 0"
+    ) {
+        return;
+    }
+
+    // Slice off the very last character from the string string
+    display.textContent = display.textContent.slice(0, -1);
+
+    // If we sliced away the last digit, default the screen view back to "0"
+    if (display.textContent === "" || display.textContent === "-") {
+        display.textContent = "0";
+    }
+
+    // Sync the updated string back into our state variables
+    if (currentOperator === "") {
+        firstNumber = display.textContent === "0" ? "" : display.textContent;
+    } else {
+        secondNumber = display.textContent === "0" ? "" : display.textContent;
+    }
+});
